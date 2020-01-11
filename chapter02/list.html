@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+    <style>
+        .strong {
+            color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- v-for="<각 요소를 할당할 변수이름> in <반복 대상 배열 또는 객체>"-->
+            <li v-for="item in list" 
+                v-bind:key="item.id"
+                v-bind:class="{ strong:item.hp > 300 }">
+                ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                <span v-if="item.hp > 300"> 강하다!</span>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 1, name: '슬라임', hp:100 },
+                    { id: 2, name: '고블린', hp:200 },
+                    { id: 3, name: '드래곤', hp:500 }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

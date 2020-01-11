@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-pre : 정적 콘텐츠를 다룰때 씀 -->
+        <a v-bind:href="url" v-pre>
+           Hello {{ message }}
+        </a><br>
+        <!-- v-once : 한번만 컴파일하고 이후에는 정적 콘텐츠로 다룸-->
+        <a v-bind:href="url" v-once>
+            Hello {{ message }}
+        </a><br>
+        <!-- v-text : 단일 Mustache 대신 사용 ex) <span>{{message}}</span>-->
+        <span v-text="message"></span> <br>
+        <!-- v-html : HTML 태그를 직접 출력하고 싶을때 사용 -->
+        <span v-html="message"></span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello <strong>Vue.js!</strong>'
+            }
+        })
+    </script>
+</body>
+
+</html>

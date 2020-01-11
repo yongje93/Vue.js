@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{ }} 이중 중괄호: Mustache 기법(텍스트 콘텐츠의 해당 위치에 message 속성과 바인딩(항상 동기화)-->
+        <p>{{ message.value }}</p>
+        <p>{{ message.value.length }}</p>
+        <p>{{ list[2] }}</p>
+        <p>{{ list[num] }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                // 객체 데이터
+                message: {
+                    value: 'Hello Vue.js!'
+                },
+                // 배열 데이터
+                list: ['사과', '바나나', '딸기'],
+                // 다른 데이터를 사용해서 list에서 값을 추출하기 위한 요소
+                num: 1
+            }
+        })
+    </script>
+</body>
+
+</html>

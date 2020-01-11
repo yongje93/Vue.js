@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+    <style>
+        @keyframes cloak-in {
+            0% {opacity: 0;}
+        }
+        #app {
+            animation: cloak-in 1s;
+        }
+        #app[v-cloak] {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- v-cloak : 인스턴스 준비가 끝나면 자동으로 제거, Mustache 등의 컴파일 이전 단계의 템플릿이 화면에 출력되는 것을 막음-->
+    <div id="app" v-cloak>
+       {{ message }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello vue.js!'
+            }
+        })
+    </script>
+</body>
+
+</html>

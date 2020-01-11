@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-if는 조건을 만족하지 못한 경우에 요소는 DOM 레벨에서 제거, 모든 감시도 제거 -->
+       <div v-if="ok">v-if 조건으로 출력하기</div> 
+        <!-- v-show는 조건을 만족하지 않는 경우, 단순하게 display:none; 스타일 적용, 리액티브 데이터에 대한 내부적인 감시가 일어남-->
+       <div v-show="ok">v-show 조건으로 출력하기</div>
+        <!-- v-if는 단일요소에 적용. <template>를 이용해 여러 요소를 그룹으로 만듬-->
+       <template v-if="ok"> <!-- v-show는 안된다. -->
+           <header>타이틀</header>
+            <div>콘텐츠</div>
+        </template>
+        
+        <!-- v-if, v-else-if, v-else-->
+        <div v-if="type === 'A'">
+            type는 A
+        </div>
+        <div v-else-if="type === 'B'">
+            type는 B
+        </div>
+        <div v-else>
+            모든 조건을 만족하지 않는 경우
+        </div>
+        
+        <!-- 두 개의 div가 다른 요소라는 것을 명시적을 지정하기 -> key 설정 -->
+        <div v-if="loaded" key="content-visible">
+            content
+        </div>
+        <div v-else key="content-loading">
+            loading now...
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ok: false
+            }
+        })
+    </script>
+</body>
+
+</html>
