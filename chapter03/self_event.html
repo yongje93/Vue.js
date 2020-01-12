@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- event.target 요소가 자기 자신일 때만 핸들러가 호출 -->
+        <!-- 모달 대화 상자의 배경 부분을 클릭해서 닫느 경우 등에 사용 -->
+        <div class="overlay" v-on:click.self="close">...</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                handler: function (comment) {
+                    console.log(comment)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
