@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--산출속성 : 몇번을 실행해도 같은 숫자가 리턴됨-->
+        <ol>
+            <li>{{ computedData }}</li>
+            <li>{{ computedData }}</li>
+        </ol>
+        <!--메서드-->
+        <ol>
+            <li>{{ methodsData() }}</li>
+            <li>{{ methodsData() }}</li>
+        </ol>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            computed: {
+                computedData: function() { return Math.random() }
+            },
+            methods: {
+                methodsData: function() { return Math.random() }
+            }
+        })
+    </script>
+</body>
+
+</html>
