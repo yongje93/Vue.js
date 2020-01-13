@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="file" v-on:change="handleChange">
+        <div v-if="preview"><img v-bind:src="preview"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                preview: ''
+            },
+            methods: {
+                handleChange: function(event) {
+                    var file = event.target.files[0]
+                    if(file && file.type.match(/^image\/(png|jpeg)$/)) {
+                        this.preview = window.URL.createObjectURL(file)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

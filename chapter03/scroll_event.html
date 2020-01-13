@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--scrollY 속성을 사용하면 사이드바를 고정하거나, 어느 정도 스크롤 되었을 때 헤더를 작게 만드는 등의 동적 스타일 적용 가능-->
+        <header v-bind:class="{ compact: scrollY > 200 }">
+            200px이상 스크롤 했으면, .compact 클래스 추가
+        </header>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                scrollY: 0,
+                timer: null
+            },
+            created: function() {
+                // 핸들러 등록하기
+                window.addEventListener('scroll',this.handleScroll)
+            },
+            beforeDestroy: function() {
+                // 핸들러 제거하기
+                window.removeEventListener('scroll', this.handleScroll)
+            },
+            methods: {
+                // 위화감을 느끼지 않을 200ms 간격으로 scroll 데이터를 변경하는 예
+                handleScroll: function() {
+                    if(this.timer === null){
+                        this.timer = setTimeout(function() {
+                            this.scrollY = window.scrollY
+                            clearTimeout(this.timer)
+                            this.timer = null
+                        }.bind(this), 200)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
