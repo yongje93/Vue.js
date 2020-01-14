@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--{{ value | filter1 | filter2 }}-->
+        180도는 {{ 180 | radian | round }} 라디안 입니다.
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        // 로컬 필터
+        new Vue({
+            el: '#app',
+            filters: {
+                // 소수점 이하 두번째 자리까지 끊는 필터
+                round: function(val) {
+                    return Math.round(val * 100) / 100
+                },
+                // 도 단위를 라디안 단위로 변환하는 필터
+                radian: function(val) {
+                    return val * Math.PI / 180
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

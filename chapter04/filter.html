@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--필터는 문자 수를 반올림하거나 쉼표를 넣는 등의 텍스트 기반 변환처리-->
+        <!--{{ <대상 데이터> | <필터 이름> }}-->
+        <!--<div v-bind:id="<대상 데이터"> | <필터 이름>"></div> -->
+        {{ price | localeNum }}원
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        // 로컬 필터
+        new Vue({
+            el: '#app',
+            data: {
+                price: 19800
+            },
+            filters: {
+                localeNum: function(val) {
+                    return val.toLocaleString()
+                }
+            }
+        })
+        // 전역 필터
+        Vue.filter('localeNum', function(val){
+            return val.toLocaleString()
+        })
+    </script>
+</body>
+
+</html>
