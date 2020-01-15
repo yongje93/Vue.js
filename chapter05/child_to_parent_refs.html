@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <comp-child ref="child"></comp-child>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        // 자식
+        Vue.component('comp-child', {
+            created: function() {
+                // 자신의 처리
+                this.$on('open', function() {
+                    console.log('함수 처리하기')
+                })
+            }
+        })
+    </script>
+    <script>
+       // 부모
+       new Vue({
+            el: '#app',
+            template: '<button v-on:click="handleClick">이벤트 실행</button>',
+            methods: {
+                handleClick: function() {
+                    // 자식 컴포넌트의 이벤트 실행
+                    this.$refs.child.$emit('open')
+                }
+            }
+       })
+    </script>
+</body>
+
+</html>
