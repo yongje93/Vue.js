@@ -11,6 +11,7 @@
 <body>
     <div id="app">
         <ul>
+            <!-- 부모 쪽의 템플릿 -->
             <comp-child v-for="item in list"
                 v-bind:key="item.id"
                 v-bind:name="item.name"
